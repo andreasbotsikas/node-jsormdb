@@ -1,0 +1,14 @@
+{ "name": "JSORMDB"
+, "publishConfig": { "tag": "alpha" }
+, "description": "JSORMDB 1.3"
+, "keywords": [ "jsormdb"]
+, "version": "1.3.0"
+, "author": "Avi Deitcher <avi@deitcher.net>",
+, "repository":
+  { "type": "git"
+  , "url": "http://github.com/andreasbotsikas/jsormdb"
+  }
+, "directories": { "src": "./src"
+                 }
+, "main": "./src/main/javascript/persist.js"
+}

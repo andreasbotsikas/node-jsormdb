@@ -27,7 +27,7 @@
 			</sources>		
 		</jscompiler>
 		
-		<!-- Copy the lib making sure that the minified file includes the license -->
+		<!-- Copy the lib and add the original jsormdb license -->
 		<concat destfile="${lib}/jsormdb.js">
 			<fileset file="${license}"/>
 			<fileset file="${build}/jsormdb-min.js"/>

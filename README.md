@@ -1,6 +1,6 @@
 # jsorm node module (node-jsormdb)
 
-This is a wrapper node module for the jsorm database (http://jsorm.com/).
+This is a wrapper node module for the [jsorm database](http://jsorm.com/) done by [Avi Deitcher](https://github.com/deitch).
 It also exposes a simple JSONDatabase to automate the persisting of the database to the disk.
 
 ## Building from source
@@ -12,17 +12,26 @@ git submodule update
 ```
 _Note:_ jsormdb (in the src folder) is linked to this repo and requires "submodule update" to update from the [original repository](https://github.com/deitch/jsormdb).
 
-Run [ant](http://ant.apache.org/) to build jsormdb from source and apply the node module patch
+### Getting jsormdb
+
+[Avi Deitcher's](https://github.com/deitch) [jsorm database](http://jsorm.com/) can be either [downloaded from the official website](http://jsorm.com/wiki/Download) or be compiled from source.
+
+If you want to skip building, go to http://jsorm.com/wiki/Download and download jsormdb archive. Place the jsormdb.js in the lib folder and you are ready to go. 
+
+If you want to build the jsormdb.js just run [ant](http://ant.apache.org/) in the root of this repository. 
 ``` bash
-ant 
+jsormdb>ant 
 ```
-
-Test by running the 
-
 
 ## Usage
 
-The module exposes a JSONDatabase object that takes an optional configuration object as a parameter. 
+The module exposes two objects:
+ * JSORM: The jsormdb object as described in its own [wiki page](http://jsorm.com/wiki/Jsormdb)
+ * JSONDatabase: A simple database wrapper to persist the changes automatically on the hard disk
+
+Since the JSORM object has not been modified at all, the best resource on using it is the [official website](http://jsorm.com/) and the [dedicated wiki page](http://jsorm.com/wiki/Jsormdb). 
+
+JSONDatabase object has a simple constructor that takes an optional configuration object as a parameter. 
 The configuration object has the following optional fields:
 
  * path: path to the database file. Default './database.json'.
@@ -34,21 +43,57 @@ The JSONDatabase object exposes the following simple functions:
  * remove( query ): Removes the items matching the provided ['where' query](http://jsorm.com/wiki/Jsormdb). Internally it uses jsormdb's remove.
  * query ( query ): Search by [query](http://jsorm.com/wiki/Jsormdb). Returns an array of records. Internally it uses jsormdb's find.
  * rollback: Rollback all changes since last commit. Internally it uses jsormdb's reject.
- * commit: Commit existing transanction and persist changes to the disk file. Internally it uses jsormdb's commit. 
+ * commit: Commit existing transaction and persist changes to the disk file. Internally it uses jsormdb's commit. 
 
 For query syntax check [jsormdb's wiki page](http://jsorm.com/wiki/Jsormdb).
 
 The JSONDatabase object exposes the internal jsormdb through its db property.
 
-## Example
+## Examples
+
+### jsormdb
+
+### JSONDatabase
 
 ``` javascript
-var databasehelper = require('jsormdb');
-var myDB = new databasehelper.JSONDatabase({path : './data.json', transactional : false});
+// Require the module
+var databaseHelper = require('jsormdb');
+// Create the database object loading data.json if it exists
+var myDB = new databaseHelper.JSONDatabase({path : './data.json', transactional : false});
+// Drop all existing entries
+myDB.remove();
+// Dummy data
+var dataToInsert = [{id: 1, name:"webinos project", website:"http://www.webinos.org"}];
+// Insert data to db
 myDB.insert(dataToInsert);
+var moreData = [{id: 2, name:"Avi Deitcher", website: "https://github.com/deitch"},{id: 3, name: "jsorm website", website: "http://jsorm.com"}]
+// Insert data to db
+myDB.insert(moreData);
+// Get all data
+var result = myDB.query(); // Equivelant to myDB.db.find();
+// Display them
+console.log("The db has the following entries:");
+console.log(result);
+
+// Query for the first entry
+var query = { field: "id", compare: "equals", value: 1 };
+// The following is quivelant to myDB.db.find({where: query});
+result = myDB.query({where: query});
+console.log("The " + result[0].name + "'s website is : " + result[0].website);
+
+// Query for the Avi's github url and pick only that field
+query = { field: "name", compare: "contains", value: "Avi" };
+var fields = { website: true };
+// The following is quivelant to myDB.db.find({where: query, fields: fields});
+result = myDB.query({where: query, fields: fields});
+process.stdout.write("Avi Deitcher's github url is ");
+console.log(result[0].website);
+
+// Remove entry with id==3
+myDB.remove({where: { field: "id", compare: "equals", value: 3 }});
 ```
 
-Please refer to the excelent [jsormdb wiki](http://jsorm.com/wiki/Jsormdb) for querying details and for advanced use of the jsormdb database.
+Please refer to the excellent [jsormdb wiki](http://jsorm.com/wiki/Jsormdb) for querying details and for advanced use of the jsormdb database.
 
 ## Disclaimer
 

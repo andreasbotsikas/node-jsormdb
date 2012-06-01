@@ -49,7 +49,7 @@ console.log("OK");
 
 process.stdout.write("Testing simple equals query: ");
 var query = { field: "name", compare: "equals", value: "test" };
-var results = myDb.db.find({where: query, fields: {name: true, value: true}});
+var results = myDb.query({where: query, fields: {name: true, value: true}});
 assert(results.length == 1, "Found more than one entry");
 assert(results[0].value == "test value", "The inserted value is wrong");
 console.log("OK");

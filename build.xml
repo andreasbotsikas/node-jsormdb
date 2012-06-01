@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="node-jsormdb" default="build">
+	<property name="jsormdb-src-folder" value="./src/jsormdb/src"/>
+	<property name="jsormdb-version" value="1.2"/>
+	<property name="license" value="./src/jsormdb/license.js"/>
+	<property name="build" value="./build"/>
+	<property name="lib" value="./lib"/>
+	
+	
+	<!-- Task for the Google Closure Compiler for JavaScript minification -->
+	<taskdef name="jscompiler" classname="com.google.javascript.jscomp.ant.CompileTask"
+		classpath="./tools/closure-compiler/compiler.jar"/>
+	
+	<target name="build" depends="init">
+		
+		<!-- combine the files into build/ and minify -->
+		<concat destfile="${build}/jsormdb-src.js">
+			<fileset file="./src/jsormdb-init.js" />
+			<fileset dir="${jsormdb-src-folder}" includes="*.js" excludes="XmlParser.js" casesensitive="false"/>
+		</concat>
+	
+		<!-- Use closure compiler to minify all jsorm JavaScript files -->
+		<!-- Available compilation levels: advanced, simple, whitespace -->
+		<jscompiler compilationlevel="whitespace" prettyPrint="true" output="${build}/jsormdb-min.js">
+			<sources dir="${build}">
+				<file name="jsormdb-src.js"/>
+			</sources>		
+		</jscompiler>
+		
+		<!-- Copy the lib making sure that the minified file includes the license -->
+		<concat destfile="${lib}/jsormdb.js">
+			<fileset file="${license}"/>
+			<fileset file="${build}/jsormdb-min.js"/>
+		</concat>
+		
+		<!-- include version in file -->
+		<replace file="${lib}/jsormdb.js" token="@@version@@" value="${jsormdb-version}"/>
+		
+		
+	</target>
+	
+	<target name="init">
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="clean" description="Removes previous build">
+		<delete verbose="true">
+			<fileset dir="${build}"/>
+			<fileset file="${lib}/jsormdb.js"/>
+		</delete>
+	</target>
+</project>

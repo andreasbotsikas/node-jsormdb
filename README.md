@@ -20,7 +20,7 @@ If you want to skip building, go to http://jsorm.com/wiki/Download and download 
 
 If you want to build the jsormdb.js just run [ant](http://ant.apache.org/) in the root of this repository. 
 ``` bash
-jsormdb>ant 
+jsormdb> ant 
 ```
 
 ## Usage
@@ -53,8 +53,8 @@ The JSONDatabase object exposes the internal jsormdb through its db property.
 
 The following examples are located in the examples folder and you can test them by running:
 ``` bash
-jsormdb\examples>node JSONDatabase.js
-jsormdb\examples>node JSORM.js
+jsormdb/examples> node JSONDatabase.js
+jsormdb/examples> node JSORM.js
 ```
 
 ### JSONDatabase
@@ -118,3 +118,9 @@ and instead of the query method call find.
 
 This code was initially written for the purposes of the [webinos project](http://www.webinos.org). 
 It is distributed freely under the [Apache 2.0 license](www.apache.org/licenses/LICENSE-2.0).
+
+All the hard work of creating the jsormdb is done solely by [Avi Deitcher](https://github.com/deitch).
+
+A special thank you is in order to the following webinos members: 
+ * [Heiko Desruelle](https://github.com/heiiko) for bringing the jsormdb module idea and writting the initial implementation.
+ * [Christos Ntanos](https://github.com/cntanos) for adding this module to the webinos platform and testing it thoroughly.

@@ -1,4 +1,4 @@
-# node-jsormdb
+# jsorm node module (node-jsormdb)
 
 This is a wrapper node module for the jsorm database (http://jsorm.com/).
 It adds the required package.json file in order to include it in node.
@@ -7,9 +7,9 @@ It adds the required package.json file in order to include it in node.
 
 Note that jsormdb is linked to this repo so after cloning do a 
 
-''' bash
+``` bash
 git submodule update
-'''
+```
 
 to update jsormd.
 
@@ -24,8 +24,8 @@ The JSONDatabase object exposes the internal jsormdb through its db property.
 
 ## Example
 
-''' javascript
+``` javascript
 var databasehelper = require('JSORMDB');
 var myDB = new databasehelper.JSONDatabase({path : pathToFile, transactional : false});
 myDB.insert(dataToInsert);
-'''
+```

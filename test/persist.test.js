@@ -18,13 +18,13 @@
 *
 *******************************************************************************/
 // Module requirements
-var database = require('../');
+var database = require(__dirname + '/../');
 var fs = require('fs'),
 	path = require('path'),
 	assert = require('assert');
 	
-var testDbPath = './test.json';
-var personsDbPath = './personsdb.json';
+var testDbPath = __dirname + '/test.json';
+var personsDbPath = __dirname + '/personsdb.json';
 
 // Empty any other attempts
 if (path.existsSync(testDbPath))

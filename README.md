@@ -1,4 +1,4 @@
-# jsorm node module (node-jsormdb)
+# jsormdb node module (node-jsormdb)
 
 This is a wrapper node module for the [jsorm database](http://jsorm.com/) done by [Avi Deitcher](https://github.com/deitch).
 It also exposes a simple JSONDatabase to automate the persisting of the database to the disk.
@@ -26,7 +26,7 @@ jsormdb>ant
 ## Usage
 
 The module exposes two objects:
- * JSORM: The jsormdb object as described in its own [wiki page](http://jsorm.com/wiki/Jsormdb)
+ * JSORM: The jsorm object as described in its own [wiki page](http://jsorm.com/wiki/Jsormdb)
  * JSONDatabase: A simple database wrapper to persist the changes automatically on the hard disk
 
 Since the JSORM object has not been modified at all, the best resource on using it is the [official website](http://jsorm.com/) and the [dedicated wiki page](http://jsorm.com/wiki/Jsormdb). 
@@ -51,7 +51,11 @@ The JSONDatabase object exposes the internal jsormdb through its db property.
 
 ## Examples
 
-### jsormdb
+The following examples are located in the examples folder and you can test them by running:
+``` bash
+jsormdb\examples>node JSONDatabase.js
+jsormdb\examples>node JSORM.js
+```
 
 ### JSONDatabase
 
@@ -97,6 +101,18 @@ myDB.remove({where: { field: "id", compare: "equals", value: 3 }});
 ```
 
 Please refer to the excellent [jsormdb wiki](http://jsorm.com/wiki/Jsormdb) for querying details and for advanced use of the jsormdb database.
+
+### JSORM
+
+The same example applies but instead of using:
+``` javascript
+var myDB = new databaseHelper.JSONDatabase({path : './data.json', transactional : false});
+```
+use:
+``` javascript
+var myDB = new databaseHelper.JSORM.db.db({parser: databaseHelper.JSORM.db.parser.json(), writeMode: databaseHelper.JSORM.db.db.modes.replace});
+```
+and instead of the query method call find.
 
 ## Disclaimer
 

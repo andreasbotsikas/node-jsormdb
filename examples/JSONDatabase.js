@@ -19,7 +19,7 @@
 // Require the module
 var databaseHelper = require('../');
 // Create the database object loading data.json if it exists
-var myDB = new databaseHelper.JSONDatabase({path : './data.json', transactional : false});
+var myDB = new databaseHelper.JSONDatabase({path : './data.json', transactional : false, debug: false});
 // Drop all existing entries
 myDB.remove();
 

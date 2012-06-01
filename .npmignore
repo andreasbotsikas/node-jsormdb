@@ -7,3 +7,4 @@ tools
 build.xml
 test/data.json
 test/test.json
+examples/data.json

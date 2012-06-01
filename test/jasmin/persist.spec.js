@@ -1,9 +1,9 @@
 describe('JSORMDB', function() {
-    var database = require('../../lib/persist');
+    var database = require('../../lib/persist.js');
     var database_object;
     
     beforeEach(function() {
-        database_object = new database.JSONDatabase({path: './data/test.json',transactional: false});
+        database_object = new database.JSONDatabase({path: '../personsdb.json',transactional: false});
     });
     
     it('Query field >= value', function() {
@@ -16,6 +16,7 @@ describe('JSORMDB', function() {
         var query = {join: "or", terms: [{field: "name", compare: "equals", value: 'Test'},{field: "age", compare: "le", value: 25}]};
         var results = database_object.query({where: query});
         expect(results[0].name).toEqual("Test");
+        expect(results[3].name).toEqual("Test3");
     });
 });
 

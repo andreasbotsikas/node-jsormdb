@@ -3,7 +3,7 @@
 	"publishConfig": { 
 		"tag": "alpha" 
 	},
-	"description": "A node module to wrap jsormdb and save a local file",
+	"description": "A node module to wrap jsormdb and persist database to a local file",
 	"keywords": [ "jsormdb", "json", "db" ],
 	"version": "0.1.0",
 	"contributors" : [ "Avi Deitcher <avi@deitcher.net>", "Andreas Botsikas <http://webinos.org/bio-andreas-botsikas/>"],

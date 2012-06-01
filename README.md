@@ -66,7 +66,10 @@ myDB.remove();
 var dataToInsert = [{id: 1, name:"webinos project", website:"http://www.webinos.org"}];
 // Insert data to db
 myDB.insert(dataToInsert);
-var moreData = [{id: 2, name:"Avi Deitcher", website: "https://github.com/deitch"},{id: 3, name: "jsorm website", website: "http://jsorm.com"}]
+var moreData = [
+	{id: 2, name:"Avi Deitcher", website: "https://github.com/deitch"},
+	{id: 3, name: "jsorm website", website: "http://jsorm.com"}
+];
 // Insert data to db
 myDB.insert(moreData);
 // Get all data

@@ -14,17 +14,18 @@ if (path.existsSync(testDbPath))
 var myDb = new  database.JSONDatabase({path: testDbPath,transactional: false});
 
 
-var inputLine = { name: "test", value: "test value"};
+var inputLine = [{ name: "test", value: "test value"}];
 myDb.insert(inputLine);
 
 assert(path.existsSync(testDbPath),"Database was not created");
 
 var allData = myDb.query();
 
-assert(allData.length != 1, "Found more than one entry");
+assert(allData.length == 1, "Found more than one entry");
 
-var query = { field: "name", compare: "eq", value: "test" };
+var query = { field: "name", compare: "equals", value: "test" };
 var results = myDb.db.find({where: query, fields: {name: true}});
-assert(results.length != 1, "Found more than one entry");
+assert(results.length == 1, "Found more than one entry");
 assert(results[0].value != "test value", "The inserted value is wrong");
 
+console.log("All tests finished successfuly");

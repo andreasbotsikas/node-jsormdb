@@ -5,7 +5,7 @@ It adds the required package.json file in order to include it in node.
 
 ## Cloning the repo
 
-Note that jsormdb is linked to this repo so after cloning do a 
+Note that jsormdb (in the src folder) is linked to this repo so after cloning do a 
 
 ``` bash
 git submodule update
@@ -29,3 +29,10 @@ var databasehelper = require('JSORMDB');
 var myDB = new databasehelper.JSONDatabase({path : pathToFile, transactional : false});
 myDB.insert(dataToInsert);
 ```
+
+Please refer to the excelent [jsormdb wiki](http://jsorm.com/wiki/Jsormdb) for querying details and for advanced use of the jsormdb database.
+
+## Disclaimer
+
+This code was initially written for the purposes of the [webinos project](http://www.webinos.org). 
+It is distributed freely under the [Apache 2.0 license](www.apache.org/licenses/LICENSE-2.0).

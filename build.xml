@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="node-jsormdb" default="build">
 	<property name="jsormdb-src-folder" value="./src/jsormdb/src"/>
-	<property name="jsormdb-version" value="1.2"/>
+	<property name="jsormdb-version" value="1.3b"/>
 	<property name="license" value="./src/jsormdb/license.js"/>
 	<property name="build" value="./build"/>
 	<property name="lib" value="./lib"/>
@@ -19,7 +19,7 @@
 			<fileset dir="${jsormdb-src-folder}" includes="*.js" excludes="XmlParser.js" casesensitive="false"/>
 		</concat>
 	
-		<!-- Use closure compiler to minify all jsorm JavaScript files -->
+		<!-- Use closure compiler to merge all jsorm JavaScript files. No need to do full minification. -->
 		<!-- Available compilation levels: advanced, simple, whitespace -->
 		<jscompiler compilationlevel="whitespace" prettyPrint="true" output="${build}/jsormdb-min.js">
 			<sources dir="${build}">

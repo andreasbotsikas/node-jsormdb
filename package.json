@@ -1,22 +1,28 @@
 {
 	"name": "jsormdb",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "A node module to wrap jsormdb and expose a simple JSONDatabase to automate the persisting of the database to the disk.",
 	"keywords": [ "jsormdb", "json", "db" ],
 	"homepage": "http://github.com/andreasbotsikas/jsormdb",
-	"contributors" : [ "Avi Deitcher <avi@deitcher.net>", "Andreas Botsikas <http://webinos.org/bio-andreas-botsikas/>"],
+	"bugs": "https://github.com/andreasbotsikas/node-jsormdb/issues",
+	"contributors" : [ "Avi Deitcher <avi@deitcher.net>", "Andreas Botsikas (http://webinos.org/bio-andreas-botsikas/)"],
 	"repository": { 
 		"type": "git",
-		"git": "http://github.com/andreasbotsikas/jsormdb"
+		"url": "http://github.com/andreasbotsikas/jsormdb.git"
 	},
 	"main": "./lib/persist.js",
 	"dependencies": {
 		"jsorm-utilities": "1.3.0"
 	},
+	"directories":{
+		"lib":"./lib",
+		"example": "./examples"
+	},
 	"engines" : {
 		"node" : ">=0.6.x"
 	},
 	"scripts":{
-		"test":"node test/persist.test.js"
+		"test":"node test/persist.test.js",
+		"prepublish": "ant"
 	}
 }

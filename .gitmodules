@@ -1,6 +1,3 @@
 [submodule "src/jsormdb"]
 	path = src/jsormdb
 	url = https://github.com/deitch/jsormdb.git
-[submodule "src/jsorm-utilities"]
-	path = src/jsorm-utilities
-	url = https://github.com/deitch/jsorm-utilities.git

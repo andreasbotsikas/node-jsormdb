@@ -1,3 +1,5 @@
+_NOTE:_ You may find the original jsormdb module at https://github.com/deitch/jsormdb.git. This repository is outdated
+
 # jsormdb node module (node-jsormdb)
 
 This is a wrapper node module for the [jsorm database](http://jsorm.com/) done by [Avi Deitcher](https://github.com/deitch).

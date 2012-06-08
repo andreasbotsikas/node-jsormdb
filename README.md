@@ -1,4 +1,4 @@
-_NOTE:_ You may find the original jsormdb module at https://github.com/deitch/jsormdb.git. This repository is outdated
+_NOTE:_ You may find the newest jsormdb module at https://github.com/deitch/jsormdb.git. This repository is outdated (versions 0.1.x).
 
 # jsormdb node module (node-jsormdb)
 
